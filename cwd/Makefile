@@ -6,7 +6,7 @@ CFLAGS	= -Wall
 
 EXE		:= main
 OBJ 	:= main.o 
-SRC 	:= main.cpp 
+SRC 	:= *.cpp 
 
 # ===========================================================================
 # Rules shared between targets and prerequisites
