@@ -8,8 +8,8 @@ int main(int argc, char* argv[])
     const char s4[10] = "123456789"; 
 
     std::cout << "addr s1:" << &s1 << std::endl; 
-    std::cout << "addr s1:" << &s2 << std::endl; 
-    std::cout << "addr s1:" << &s3 << std::endl; 
+    std::cout << "addr s2:" << &s2 << std::endl; 
+    std::cout << "addr s3:" << &s3 << std::endl; 
     std::cout << "addr s4:" << &s4 << std::endl; 
 
     return 0;  
@@ -17,8 +17,8 @@ int main(int argc, char* argv[])
 
 /*
 addr s1:0x7fffc7fa9a80
-addr s1:0x7fffc7fa9a70
-addr s1:0x7fffc7fa9a60
+addr s2:0x7fffc7fa9a70
+addr s3:0x7fffc7fa9a60
 addr s4:0x7fffc7fa9a50
 
    text	   data	    bss	    dec	    hex	filename
