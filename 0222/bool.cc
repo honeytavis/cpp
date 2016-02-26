@@ -4,8 +4,13 @@ int main(int argc, char* argv[])
 {
 	bool i = true; 
 	bool j = false; 
-	std::cout << "true = " << i << std::endl; 
-	std::cout << "false = " << j << std::endl; 
+
+	std::cout << "i = " << i << " " << "j = " << j << std::endl; 
+
+	std::cout << std::boolalpha; 
+	std::cout << "i = " << i << " " << "j = " << j << std::endl; 
+	std::cout << std::noboolalpha; 
+
 
 	return 0; 
 }

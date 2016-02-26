@@ -1,5 +1,9 @@
 #include <iostream>
 
+using std::cin; 
+using std::cout; 
+using std::endl; 
+
 int main(int argc, char* argv[])
 {
 	int a = 10; 
@@ -7,38 +11,22 @@ int main(int argc, char* argv[])
 	int c = 30; 
 
 	int &j = a; 
-	std::cout << "&j = a" << std::endl; 
-	std::cout << "a = " << a << " ";
-	std::cout << "&a = " <<  &a << std::endl; 
-	std::cout << "b = " << b << " ";
-	std::cout << "&b = " <<  &b << std::endl; 
-	std::cout << "c = " << c << " ";
-	std::cout << "&c = " <<  &c << std::endl; 
-	std::cout << "j = " << j << " ";
-	std::cout << "&j = " <<  &j << std::endl; 
-
+	cout << "addr a:" << &a << endl; 
+	cout << "addr j:" << &j << endl; 
+	cout << "a = " << a << endl; 
+	cout << "j = " << j << endl; 
 
 	j = b; 
-	std::cout << "j = b" << std::endl; 
-	std::cout << "a = " << a << " ";
-	std::cout << "&a = " <<  &a << std::endl; 
-	std::cout << "b = " << b << " ";
-	std::cout << "&b = " <<  &b << std::endl; 
-	std::cout << "c = " << c << " ";
-	std::cout << "&c = " <<  &c << std::endl; 
-	std::cout << "j = " << j << " ";
-	std::cout << "&j = " <<  &j << std::endl; 
+	cout << "addr a:" << &a << endl; 
+	cout << "addr j:" << &j << endl; 
+	cout << "a = " << a << endl; 
+	cout << "j = " << j << endl; 
 
 	a = c; 
-	std::cout << "a = c" << std::endl; 
-	std::cout << "a = " << a << " ";
-	std::cout << "&a = " <<  &a << std::endl; 
-	std::cout << "b = " << b << " ";
-	std::cout << "&b = " <<  &b << std::endl; 
-	std::cout << "c = " << c << " ";
-	std::cout << "&c = " <<  &c << std::endl; 
-	std::cout << "j = " << j << " ";
-	std::cout << "&j = " <<  &j << std::endl; 
-
+	cout << "addr a:" << &a << endl; 
+	cout << "addr j:" << &j << endl; 
+	cout << "a = " << a << endl; 
+	cout << "j = " << j << endl; 
+	
 	return 0; 
 }

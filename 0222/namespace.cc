@@ -8,10 +8,15 @@ namespace A
 	}
 }
 
-using namespace A; 
+//using namespace A; 
 
 int main(int argc, char* argv[])
 {
+
+	//using A::dispA; 
+	//dispA(); 
+	
 	A::dispA(); 
+
 	return 0; 
 }
