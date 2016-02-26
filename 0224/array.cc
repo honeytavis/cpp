@@ -1,11 +1,13 @@
 #include <iostream>
+#include <iterator>
 
 int main()
 {
 	unsigned scores[11]{33, 44, 55, 66, 77, 88, 99}; 
 
-	unsigned *b = scores; 
-	unsigned *e	= scores + 11; 
+	//迭代遍历
+	auto b = std::begin(scores); 
+	auto e = std::end(scores); 
 	while (b != e) {
 		std::cout << *b++ << " "; 
 	}
