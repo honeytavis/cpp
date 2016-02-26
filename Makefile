@@ -13,12 +13,13 @@ SRC 	:= *.c*
 
 $(EXE): $(OBJ) 
 	$(CXX) $^ -o $@ 
+	rm -f $(OBJ)
 
 $(OBJ): $(SRC)
 	$(CXX) -c $< -o $@ $(CFLAGS)
 
 PHONY += clean
 clean: 
-	@rm -f $(EXE) $(OBJ)
+	@rm -f $(EXE) 
 
 .PHONY: PHONY
