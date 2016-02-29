@@ -1,10 +1,11 @@
 # ========================================================================
 # Make variables (CC, etc...)
-CC		= gcc
-CXX		= g++
-#CC		= clang 
-#CXX		= clang++ 
-CFLAGS	= -Wall -std=c++11
+#CC		= gcc
+#CXX		= g++
+CC		= clang 
+CXX		= clang++ 
+CFLAGS	= -Wall 
+CXXFLAGS	= -std=c++11 -fno-elide-constructors
 
 EXE		:= main
 OBJ 	:= main.o 
@@ -18,7 +19,7 @@ $(EXE): $(OBJ)
 	rm -f $(OBJ)
 
 $(OBJ): $(SRC)
-	$(CC) -c $< -o $@ $(CFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS) $(CXXFLAGS)
 
 PHONY += clean
 clean: 

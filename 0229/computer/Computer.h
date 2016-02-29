@@ -1,15 +1,17 @@
+#ifndef COMPUTER_H
+#define COMPUTER_H
+
 #include <cstring>
 
 //class的默认访问权限是private
 class Computer {
 public: //访问说明符
 	Computer(); 
-	Computer(const char *pBrand, const float fPrice); 
+	//explicit Computer(const char *pBrand, const float fPrice = 0); 
+	Computer(const char *pBrand, const float fPrice = 0); 
 	Computer(const Computer &rhs);  
 	Computer& operator=(const Computer &rhs); 
 	~Computer(); 
-	void setBrand(const char *pBrand); 
-	void setPrice(float fPrice); 
 	void Print(); 
 
 private:
@@ -48,7 +50,7 @@ Computer& Computer::operator=(const Computer &rhs) //使用 & 节省开销
 
 	delete [] pBrand_; //原空间可能不够用
 	pBrand_ = new char[strlen(rhs.pBrand_)+1]; 
-	strcpy(pBrand_, rhs.pBrand_); 
+	strcpy(pBrand_, rhs.pBrand_); //深拷贝
 	fPrice_ = rhs.fPrice_; 
 
 	return *this; //不可更改
@@ -68,21 +70,13 @@ Computer::~Computer()
 
 //构造函数无返回值
 
-void Computer::setBrand(const char *pBrand)
-{
-	strcpy(pBrand_, pBrand); 
-}
-
-void Computer::setPrice(float fPrice)
-{
-	fPrice_ = fPrice;
-}
 void Computer::Print()
 {
 	std::cout << "Brand: " << pBrand_ << std::endl; 
 	std::cout << "Price: " << fPrice_ << std::endl; 
 }
 
+#endif
 
 // strlen(empty class) = 1
 
@@ -91,3 +85,4 @@ void Computer::Print()
 // 复制构造函数
 // 赋值运算符
 // 析构函数
+//

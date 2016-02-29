@@ -1,5 +1,5 @@
 #include <iostream>
-#include "computer.h"
+#include "Computer.h"
 
 //函数的返回值是一个对象 
 Computer getComputer()
@@ -11,12 +11,11 @@ Computer getComputer()
 
 int main()
 {
-
 	Computer pc0; 
 	pc0.Print(); 
 
 	{
-		Computer pc1("Dell", 1000); 
+		Computer pc1 = "Dell"; //隐式转换
 		pc1.Print(); 
 	}
 
