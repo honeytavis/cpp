@@ -2,6 +2,8 @@
 # Make variables (CC, etc...)
 CC		= gcc
 CXX		= g++
+#CC		= clang 
+#CXX		= clang++ 
 CFLAGS	= -Wall -std=c++11
 
 EXE		:= main
@@ -16,7 +18,7 @@ $(EXE): $(OBJ)
 	rm -f $(OBJ)
 
 $(OBJ): $(SRC)
-	$(CXX) -c $< -o $@ $(CFLAGS)
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 PHONY += clean
 clean: 
