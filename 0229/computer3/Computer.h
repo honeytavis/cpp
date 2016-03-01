@@ -6,8 +6,6 @@
 class Computer {
 public: 
 	Computer(const char *pBrand, const float fPrice); 
-	Computer(const Computer &rhs);  
-	Computer& operator=(const Computer &rhs); 
 	~Computer(); 
 	static void Print(Computer &comp); 
 	static void PrintTotal(); 
@@ -30,26 +28,6 @@ Computer::Computer(const char *pBrand, const float fPrice)
 	totalPrice_ += fPrice_; 
 	pBrand_ = new char[strlen(pBrand)+1]; 
 	strcpy(pBrand_, pBrand); 
-}
-
-Computer::Computer(const Computer &rhs) 
-	: fPrice_(rhs.fPrice_)
-{
-	pBrand_ = new char[strlen(rhs.pBrand_)+1]; 
-	strcpy(pBrand_, rhs.pBrand_); 
-}
-
-Computer& Computer::operator=(const Computer &rhs) 
-{
-	if (this == &rhs)
-		return *this; //避免自身复制 提高程序的性能
-
-	delete [] pBrand_; //原空间可能不够用
-	pBrand_ = new char[strlen(rhs.pBrand_)+1]; 
-	strcpy(pBrand_, rhs.pBrand_); //深拷贝
-	fPrice_ = rhs.fPrice_; 
-
-	return *this; //不可更改
 }
 
 Computer::~Computer() 
