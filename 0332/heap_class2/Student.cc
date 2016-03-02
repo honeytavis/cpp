@@ -12,6 +12,13 @@ Student::~Student()
 	std::cout << "~Student()" << std::endl; 
 }
 
+Student *Student::Creat()
+{
+	Student *p = new Student; 
+	return p; 
+}
+
+/*
 void *Student::operator new(size_t sz)
 {
 	std::cout << "operator new" << std::endl; 
@@ -24,9 +31,4 @@ void Student::operator delete(void *p)
 	std::cout << "operator delete" << std::endl; 
 	free (p); 
 }
-
-Student *Student::Creat(Student *p)
-{
-	p = new Student; 
-	return p; 
-}
+*/
