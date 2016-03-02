@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "String.h"
 
 String::String() : pStr_(nullptr) {}
@@ -35,6 +36,8 @@ String& String::operator=(const String &rhs)
 
 String::~String()
 {
+	if (pStr_ == nullptr)
+		return; 
 	delete [] pStr_; 
 	pStr_ = nullptr; 
 }
