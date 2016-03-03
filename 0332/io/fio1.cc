@@ -15,7 +15,6 @@ int main()
 	std::string s; 
 	std::vector<std::string> vec_str; 
 	//while (ifs >> s) {
-	//while (getline(ifs, s)) {
 	while (getline(ifs, s)) {
 		//std::cout << s << std::endl; 
 		vec_str.push_back(s); 
