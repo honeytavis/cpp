@@ -23,7 +23,7 @@ void Word_Static::Read_File(const std::string &file_name)
 	while (ifs >> str_) {
 		vec_str_.push_back(str_); 
 	}
-	for (auto i : vec_str_) {
+	for (auto &i : vec_str_) {
 		auto b = std::begin(vec_red_);
 		auto e = std::end(vec_red_); 
 		while (b != e) {
@@ -52,7 +52,7 @@ void Word_Static::Write_File(const std::string &file_name)
 		exit(-1); 
 	}
 
-	for (auto i : vec_red_) {
+	for (auto &i : vec_red_) {
 		std::stringstream ss; 
 		ss << i.word << ' ' << i.freq << std::endl; 
 		str_ = ss.str(); 
