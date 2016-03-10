@@ -42,7 +42,7 @@ void TextQuery::writeFile(const std::string& fileName)
 		exit(-1); 
 	}
 
-	for (auto i : word_freq_) {
+	for (auto const& i : word_freq_) {
 		ofs << i.first << ": "
 			<< i.second << std::endl; 
 	}
@@ -50,11 +50,12 @@ void TextQuery::writeFile(const std::string& fileName)
 
 void TextQuery::wordQuery(const std::string& word)
 {
-	std::cout << "Word: " << word << " "  
-			  << "Freq: " << word_freq_[word] << std::endl; 
+	std::cout << "Word: " << word << ' ' 
+			  << "Freq: " << word_freq_[word] << '\n'; 
 
-	for (auto i : word_line_[word]) {
-		std::cout << "  " << i << " " 
-				  << file_[i] << std::endl;
+	for (auto const& i : word_line_[word]) {
+		std::cout << ' ' << i 
+				  << ' ' << file_[i] << '\n';
 	}
+	std::cout << std::endl; 
 }

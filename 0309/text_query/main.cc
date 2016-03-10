@@ -19,7 +19,6 @@ int main(int argc, char** argv)
 		std::cin >> word; 
 		if (!word.empty()) {
 			text.wordQuery(word); 
-			std::cout << std::endl; 
 			std::cout << "You can search again or exit(Ctrl+C):"; 
 		} else {
 			break; 
