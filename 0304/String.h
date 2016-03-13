@@ -8,11 +8,12 @@ class String {
 public:
 	String(); 
 	~String(); 
-	void Print(); 
 
 	String(const char*); 
 	String(const String&); 
+	String(String&&); 
 	
+	String& operator=(String&&); 
 	String& operator=(const String&); 
 	String& operator=(const char*); 
 

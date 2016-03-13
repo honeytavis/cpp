@@ -4,29 +4,29 @@
 int main()
 {
 	String s1;
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	String s2("hello world"); 
-	s2.Print(); 
+	std::cout << s2 << '\n'; 
 
 	String s3(s2); 
-	s3.Print(); 
+	std::cout << s3 << '\n'; 
 
 	s1 = s2; 
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	char ch[] = "lenovo"; 
 	s1 = ch; 
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	s1 += s2; 
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	s1 += "nihao"; 
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	s1[0] = '*'; 
-	s1.Print(); 
+	std::cout << s1 << '\n'; 
 
 	const String s4("thinkpad"); 
 	std::cout << "s4: " << s4.c_str() << std::endl; 

@@ -6,27 +6,48 @@
 
 String::String() 
 {
-	//std::cout << "String()" << std::endl; 
+	std::cout << "String()" << '\n'; 
 	pstr_ = new char[1](); 
 }
 
 String::~String()
 {
-	//std::cout << "~String()" << std::endl; 
+	std::cout << "~String()" << '\n'; 
 	delete [] pstr_; 
 	pstr_ = nullptr; 
 }
 
 String::String(const char *pstr)
 {
+	//std::cout << "String(const char*)" << '\n'; 
 	pstr_ = new char[strlen(pstr) + 1]; 
 	strcpy(pstr_, pstr); 
 }
 
 String::String(const String &rhs)
 {
+	std::cout << "String(const String&)" << '\n'; 
 	pstr_ = new char[strlen(rhs.pstr_) + 1]; 
 	strcpy(pstr_, rhs.pstr_); 
+}
+
+String::String(String&& rhs)
+{
+	std::cout << "String(String&&)" << '\n'; 
+	pstr_ = rhs.pstr_; 
+	rhs.pstr_ = nullptr; // essential
+}
+
+String& String::operator=(String&& rhs)
+{
+	std::cout << "String::operator=(String&&)" << '\n'; 
+	if (this != &rhs) {
+		delete [] pstr_; 
+		pstr_ = rhs.pstr_; 
+		rhs.pstr_ = nullptr; 
+	}
+
+	return *this; 
 }
 
 String& String::operator=(const String &rhs)
@@ -70,14 +91,6 @@ String& String::operator+=(const char* pstr)
 	tmp = nullptr; 
 
 	return *this; 
-}
-
-void String::Print()
-{	
-	if (pstr_[0] == '\0') {
-		return; 
-	}
-	std::cout << pstr_ << std::endl; 
 }
 
 char& String::operator[](std::size_t index)
@@ -193,8 +206,7 @@ std::istream& operator>>(std::istream& is, String& s)
 
 String operator+(const String& lhs, const String& rhs)
 {
-	String tmp; 
-	tmp += lhs; 
+	String tmp(lhs); 
 	tmp += rhs;  
 
 	return tmp; 
@@ -202,8 +214,7 @@ String operator+(const String& lhs, const String& rhs)
 
 String operator+(const String& lhs, const char* rhs)
 {
-	String tmp; 
-	tmp += lhs; 
+	String tmp(lhs); 
 	tmp += rhs;  
 
 	return tmp; 
@@ -211,8 +222,7 @@ String operator+(const String& lhs, const char* rhs)
 
 String operator+(const char* lhs, const String& rhs)
 {
-	String tmp; 
-	tmp += lhs; 
+	String tmp(lhs); 
 	tmp += rhs;  
 
 	return tmp; 
