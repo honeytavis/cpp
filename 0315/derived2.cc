@@ -23,7 +23,7 @@ private:
 
 class Derived : public Base {
 public:
-	Derived() : Base()
+	Derived() : Base() // better
 	{
 		std::cout << "Derived()" << std::endl; 
 	}
