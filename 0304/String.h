@@ -8,6 +8,7 @@ class String {
 public:
 	String(); 
 	~String(); 
+	int getlen() const; 
 
 	String(const char*); 
 	String(const String&); 

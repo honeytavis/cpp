@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "String.h"
 
 int main()
@@ -37,36 +38,16 @@ int main()
 
 
 	if (s4 != s2) {
-		std::cout << "s4 != s2" << std::endl; 
+		std::cout << "s4 != s2" << '\n'; 
 	} 
-	if (s4 == s3) {
-		std::cout << "s4 == s3" << std::endl; 
-	}
-	if (s2 < s4) {
-		std::cout << "s2 < s4" << std::endl; 
-	}
-	if (s2 <= s4) {
-		std::cout << "s2 <= s4" << std::endl; 
-	}
-	if (s4 > s2) {
-		std::cout << "s4 > s2" << std::endl; 
-	}
-	if (s4 >= s2) {
-		std::cout << "s4 >= s2" << std::endl; 
-	}
 
-	s1 = s2 + s3; 
-	std::cout << s1 << std::endl; 
+	std::vector<String> myVec; 
+	myVec.push_back("hello"); 
+	std::cout << myVec[0] << '\n'; 
 
-	s1 = ch + s3; 
-	std::cout << s1 << std::endl; 
-
-	s1 = s2 + ch; 
-	std::cout << s1 << std::endl; 
-
-	std::cout << "Please input your string:" << std::endl; 
-	std::cin >> s1; 
-	std::cout << s1 << std::endl; 
-
+	std::cout << "Please input your name:" << '\n'; 
+	std::cin >> s3; 
+	std::cout << s3 << std::endl; 
+	
 	return 0; 
 }

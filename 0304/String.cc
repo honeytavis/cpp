@@ -4,43 +4,35 @@
 #include <cstdlib>
 #include <cstddef>
 
-String::String() 
-{
-	std::cout << "String()" << '\n'; 
-	pstr_ = new char[1](); 
-}
+String::String() : pstr_(new char[1]()) {}
 
 String::~String()
 {
-	std::cout << "~String()" << '\n'; 
 	delete [] pstr_; 
 	pstr_ = nullptr; 
 }
 
 String::String(const char *pstr)
+: pstr_(new char[sizeof(pstr)])
 {
-	//std::cout << "String(const char*)" << '\n'; 
-	pstr_ = new char[strlen(pstr) + 1]; 
 	strcpy(pstr_, pstr); 
 }
 
-String::String(const String &rhs)
+String::String(const String &rhs) 
+: pstr_(new char[rhs.size() + 1])
 {
-	std::cout << "String(const String&)" << '\n'; 
-	pstr_ = new char[strlen(rhs.pstr_) + 1]; 
 	strcpy(pstr_, rhs.pstr_); 
 }
 
 String::String(String&& rhs)
+: pstr_(rhs.pstr_)
 {
 	std::cout << "String(String&&)" << '\n'; 
-	pstr_ = rhs.pstr_; 
 	rhs.pstr_ = nullptr; // essential
 }
 
 String& String::operator=(String&& rhs)
 {
-	std::cout << "String::operator=(String&&)" << '\n'; 
 	if (this != &rhs) {
 		delete [] pstr_; 
 		pstr_ = rhs.pstr_; 
@@ -50,14 +42,12 @@ String& String::operator=(String&& rhs)
 	return *this; 
 }
 
-String& String::operator=(const String &rhs)
+String& String::operator=(const String& rhs)
 {
-	if (this == &rhs) {
-		return *this; 
+	//std::cout << "String::operator=(const String&)" << '\n'; 
+	if (this != &rhs) {
+		*this = rhs.pstr_; 
 	}
-	delete [] pstr_; 
-	pstr_ = new char[strlen(rhs.pstr_) + 1]; 
-	strcpy(pstr_, rhs.pstr_); 
 
 	return *this; 
 }
@@ -65,30 +55,26 @@ String& String::operator=(const String &rhs)
 String& String::operator=(const char* pstr)
 {
 	delete [] pstr_; 
-	pstr_ = new char[strlen(pstr) + 1]; 
+	pstr_ = new char[sizeof(pstr)]; 
 	strcpy(pstr_, pstr); 
-}
-
-String& String::operator+=(const String& rhs)
-{
-	char* tmp = new char[strlen(rhs.pstr_) + strlen(pstr_) + 1](); 
-	strcat(tmp, pstr_); 
-	strcat(tmp, rhs.pstr_); 
-	delete [] pstr_; 
-	pstr_ = tmp; 
-	tmp = nullptr; 
 
 	return *this; 
 }
 
+String& String::operator+=(const String& rhs)
+{
+	std::cout << "String::operator+=(const String&)" << '\n'; 
+	return *this += rhs.pstr_;
+}
+
 String& String::operator+=(const char* pstr)
 {
-	char* tmp = new char[strlen(pstr) + strlen(pstr_) + 1](); 
-	strcat(tmp, pstr_); 
+	char* tmp = new char[sizeof(pstr) + this->size()]; 
+	strcpy(tmp, pstr_); 
 	strcat(tmp, pstr); 
+
 	delete [] pstr_; 
 	pstr_ = tmp; 
-	tmp = nullptr; 
 
 	return *this; 
 }
@@ -96,7 +82,7 @@ String& String::operator+=(const char* pstr)
 char& String::operator[](std::size_t index)
 {
 	static char zero = '\0'; 
-	if (index >=0 && index <= strlen(pstr_)) {
+	if (index <= strlen(pstr_)) {
 		return pstr_[index]; 
 	} else {
 		std::cout << "illegal operation" << std::endl; 
@@ -107,7 +93,7 @@ char& String::operator[](std::size_t index)
 const char& String::operator[](std::size_t index) const
 {
 	static char zero = '\0'; 
-	if (index >=0 && index <= strlen(pstr_)) {
+	if (index <= strlen(pstr_)) {
 		return pstr_[index]; 
 	} else {
 		std::cout << "illegal operation" << std::endl; 
@@ -127,10 +113,10 @@ const char* String::c_str() const
 
 bool operator==(const String& lhs, const String& rhs)
 {
-	if (strcmp(lhs.pstr_, rhs.pstr_) != 0) {
-		return false; 
-	} else {
+	if (strcmp(lhs.pstr_, rhs.pstr_) == 0) {
 		return true; 
+	} else {
+		return false; 
 	}
 }
 
@@ -190,12 +176,13 @@ std::ostream& operator<<(std::ostream& os, const String& s)
 
 std::istream& operator>>(std::istream& is, String& s)
 {
-	//函数内的内置类不执行默认初始化
-	char tmp[BUFSIZ] = {0}; 
+
+	char tmp[BUFSIZ] = {0}; // 函数内的内置类不执行默认初始化
 	is >> tmp; 
 	tmp[BUFSIZ - 1] = 0; 
+
 	delete [] s.pstr_; 
-	s.pstr_ = new char[strlen(tmp) + 1](); 
+	s.pstr_ = new char[sizeof(tmp)]; 
 	strcpy(s.pstr_, tmp); 
 	
 	if (!is)
