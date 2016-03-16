@@ -18,25 +18,18 @@ public:
 	}
 }; 
 
-void test(Base& x)
-{
-	x.func(5); 
-}
-
 int main()
 {
 	Base bc; 
 	Sub  sc; 
-	test(bc); 
-	test(sc); 
+
+	Base& rbc = bc; 
+	Base& rsc = sc;
+	rbc.func(20); 
+	rsc.func(20); 
 
 	sc.Base::func(10); 
 	sc.func(10); 
-
-	Base& rbc = bc; 
-	rbc.func(20); 
-	Sub& rsc = sc;
-	rsc.func(20); 
 
 	return 0; 
 }
