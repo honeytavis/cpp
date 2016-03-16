@@ -13,7 +13,7 @@ String::~String()
 }
 
 String::String(const char *pstr)
-: pstr_(new char[sizeof(pstr)])
+: pstr_(new char[strlen(pstr) + 1])
 {
 	strcpy(pstr_, pstr); 
 }
@@ -55,7 +55,7 @@ String& String::operator=(const String& rhs)
 String& String::operator=(const char* pstr)
 {
 	delete [] pstr_; 
-	pstr_ = new char[sizeof(pstr)]; 
+	pstr_ = new char[strlen(pstr) + 1]; 
 	strcpy(pstr_, pstr); 
 
 	return *this; 
@@ -69,7 +69,7 @@ String& String::operator+=(const String& rhs)
 
 String& String::operator+=(const char* pstr)
 {
-	char* tmp = new char[sizeof(pstr) + this->size()]; 
+	char* tmp = new char[strlen(pstr) + this->size() + 1]; 
 	strcpy(tmp, pstr_); 
 	strcat(tmp, pstr); 
 
@@ -182,7 +182,7 @@ std::istream& operator>>(std::istream& is, String& s)
 	tmp[BUFSIZ - 1] = 0; 
 
 	delete [] s.pstr_; 
-	s.pstr_ = new char[sizeof(tmp)]; 
+	s.pstr_ = new char[strlen(tmp) + 1]; 
 	strcpy(s.pstr_, tmp); 
 	
 	if (!is)

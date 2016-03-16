@@ -16,7 +16,7 @@ int main()
 	s1 = s2; 
 	std::cout << s1 << '\n'; 
 
-	char ch[] = "lenovo"; 
+	char ch[] = "lenovo lenovo lenovo"; 
 	s1 = ch; 
 	std::cout << s1 << '\n'; 
 
