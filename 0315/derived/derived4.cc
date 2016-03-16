@@ -5,6 +5,7 @@ public:
 	int func(int ix)
 	{
 		std::cout << "BaseClass::func(int)" << '\n'; 
+		ix_ = ix; 
 		return ix_; 
 	}
 	
