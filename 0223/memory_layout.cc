@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     const static char s4[] = "123456789"; 
     const static char *s5 = "123456789"; 
 
-	//local variables
+	// local variables
 	std::cout << "addr &s1:" << &s1 << std::endl; 
     std::cout << "addr  s1:" << static_cast<const void *>(s1) << std::endl; 
 	std::cout << "addr &s2:" << &s2 << std::endl; 
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     std::cout << "addr  s5:" << static_cast<const void *>(s5) << std::endl; 
     std::cout << std::endl; 
 
-	//global variables
+	// global variables
 	std::cout << "addr &gs1:" << &gs1 << std::endl; 
     std::cout << "addr  gs1:" << static_cast<const void *>(gs1) << std::endl; 
 	std::cout << "addr &gs2:" << &gs2 << std::endl; 
@@ -62,5 +62,6 @@ addr  gs3:0x400db7
 addr &gs4:0x602080
 addr  gs4:0x400cf1
 */
-//Q: main函数返回前内存中总共有多少个"123456789"?
-//6个, 其中文字常量区3个,全局区2个,stack区1个
+
+// Q: main函数返回前内存中总共有多少个"123456789"?
+// 6个, 其中文字常量区3个,全局区2个,stack区1个
