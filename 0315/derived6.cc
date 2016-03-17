@@ -11,7 +11,8 @@ public:
 
 class Sub : public Base {
 public:
-	void func(int x) // <=> virtual void func(int x)
+	//virtual void func(int x) override
+	void func(int x) override 
 	{
 		std::cout << "Sub::func(int)" << '\n'
 				  << "x = " << ++x << '\n'; 
