@@ -11,38 +11,26 @@ SocketIO::SocketIO(const int sockfd) : _sockfd(sockfd) {}
 
 ssize_t SocketIO::readn(char* buf, size_t count) 
 {
-    //size_t nleft = count; // 剩余的字节数
-    //char* bufp = buf; // 缓冲区的偏移量 
-
-    ssize_t readNum = ::read(_sockfd, buf, count); 
-    if (readNum < 0) {
-        perror("read()"); 
-        exit(EXIT_FAILURE);
-    } 
-    std::cout << buf << '\n'; 
-    return readNum; 
-
-/*
+    size_t nleft = count; // 剩余的字节数
+    char* bufp = buf; // 缓冲区的偏移量 
+    ssize_t readNum;
 
     while (nleft > 0) {
         readNum = ::read(_sockfd, bufp, nleft); 
-        if (readNum < 0) {
-            if (errno == EINTR) {
-                continue; 
-            }
-            return -1; 
-        } else if (0 == readNum) {
-            break; 
-        } else {
+        if (readNum > 0) {
             nleft -= readNum; 
             bufp += readNum; 
+        } else if (0 == readNum) {
+            break; 
+        } else if (readNum < 0) {
+            perror("read()"); 
+            exit(EXIT_FAILURE); 
         }
 
         std::cout << buf << '\n'; 
     }
 
     return count - nleft; 
-*/
 }
 
 ssize_t SocketIO::writen(char* buf, size_t count) 

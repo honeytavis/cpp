@@ -9,11 +9,9 @@ DIR_BIN  := $(wildcard bin)
 
 EXT      := cc
 INCLUDE  := -I$(DIR_INC)
-
 SRC      := $(wildcard $(DIR_SRC)/*.$(EXT))
 OBJ      := $(patsubst $(DIR_SRC)/%.$(EXT), $(DIR_OBJ)/%.o, $(SRC))
 #OBJ      := $(patsubst %.$(EXT), $(DIR_OBJ)/%.o, $(notdir $(SRC)))
-
 EXE      := $(DIR_BIN)/main
 
 # =========================================================================
@@ -32,9 +30,8 @@ CXXFLAGS   := -Wall -std=c++11
 $(EXE): $(OBJ)
 	$(CXX) $^ -o $@
 
-#$(DIR_OBJ)/%.o: $(DIR_SRC)/%.c
-$(OBJ): $(SRC) 
-	$(CXX) -c $< -o $@ $(CXXFLAGS) $(INCLUDE)
+$(DIR_OBJ)/%.o: $(DIR_SRC)/%.$(EXT)
+	$(CXX) -c $^ -o $@ $(CXXFLAGS) $(INCLUDE)
 
 PHONY += clean
 clean: 

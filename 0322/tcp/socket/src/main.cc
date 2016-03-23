@@ -11,10 +11,10 @@ int main()
     int ret = socket.accept(); 
     SocketIO sockIO(ret); 
 
-    char buf[20]; 
-    sockIO.readn(buf, sizeof(buf)); 
-    //sockIO.readline(buf, 1024); 
-    //sockIO.writen(buf, 1024); 
+    char buf[1024]; 
+    //sockIO.readn(buf, sizeof(buf)); 
+    sockIO.readline(buf, 1024); 
+    sockIO.writen(buf, 1024); 
 
     return 0; 
 }
