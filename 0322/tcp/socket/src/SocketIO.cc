@@ -7,6 +7,8 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
+namespace TCP {
+
 SocketIO::SocketIO(const int sockfd) : _sockfd(sockfd) {}
 
 ssize_t SocketIO::readn(char* buf, size_t count) 
@@ -101,4 +103,6 @@ ssize_t SocketIO::readline(char* buf, size_t maxlen)
 
     *pbuf = 0; 
     return maxlen - 1; 
+}
+
 }

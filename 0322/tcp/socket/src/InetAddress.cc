@@ -1,6 +1,8 @@
 #include "InetAddress.h"
 #include <string.h>
 
+namespace TCP {
+
 InetAddress::InetAddress(uint16_t port)
 {
     memset(&_addr, 0, sizeof(_addr)); 
@@ -37,4 +39,6 @@ std::string InetAddress::ip() const
 uint16_t InetAddress::port()  const
 {
     return ntohs(_addr.sin_port); 
+}
+
 }

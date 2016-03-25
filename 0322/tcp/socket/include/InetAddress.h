@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string>
 
+namespace TCP {
+
 class InetAddress {
 public:
     explicit InetAddress(uint16_t port); 
@@ -22,4 +24,5 @@ private:
     struct sockaddr_in _addr; 
 }; 
 
+} // end of namespace TCP
 #endif

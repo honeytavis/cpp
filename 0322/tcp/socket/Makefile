@@ -5,14 +5,14 @@
 DIR_INC  := $(wildcard include)
 DIR_SRC  := $(wildcard src)
 DIR_OBJ  := $(wildcard obj)
-DIR_BIN  := $(wildcard bin)
+DIR_BIN  := ../bin
 
 EXT      := cc
 INCLUDE  := -I$(DIR_INC)
 SRC      := $(wildcard $(DIR_SRC)/*.$(EXT))
 OBJ      := $(patsubst $(DIR_SRC)/%.$(EXT), $(DIR_OBJ)/%.o, $(SRC))
 #OBJ      := $(patsubst %.$(EXT), $(DIR_OBJ)/%.o, $(notdir $(SRC)))
-EXE      := $(DIR_BIN)/main
+TARGET   := $(DIR_BIN)/main
 
 # =========================================================================
 # Make variables (CC, etc...)
@@ -23,11 +23,13 @@ CFLAGS     := -Wall
 CXX        := clang++
 CXXFLAGS   := -Wall -std=c++11
 
+VPATH       = ../bin
+
 # =========================================================================
 # Rules shared between targets and prerequisites
 # =========================================================================
 
-$(EXE): $(OBJ)
+$(TARGET): $(OBJ)
 	$(CXX) $^ -o $@
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.$(EXT)
@@ -35,6 +37,7 @@ $(DIR_OBJ)/%.o: $(DIR_SRC)/%.$(EXT)
 
 PHONY += clean
 clean: 
-	-rm -f $(EXE) $(OBJ)
+	rm -f $(TARGET) $(OBJ)
+#-@rm -f $(TARGET) $(OBJ)
 
 .PHONY: PHONY

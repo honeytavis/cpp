@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+namespace TCP {
+
 class SocketIO {
 public: 
     explicit SocketIO(const int sockfd); 
@@ -16,5 +18,7 @@ public:
 private: 
     int _sockfd;
 }; 
+
+}
 
 #endif

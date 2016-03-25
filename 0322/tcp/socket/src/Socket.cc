@@ -9,6 +9,8 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
+namespace TCP {
+
 Socket::Socket() 
 {
     _sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); 
@@ -52,10 +54,8 @@ int Socket::accept()
     
     InetAddress local = localAddress(accefd); 
     InetAddress peer = peerAddress(accefd); 
-    printf("connected! %s:%d --> %s:%d\n", local.ip().c_str(),
-                                        local.port(),
-                                        peer.ip().c_str(),
-                                        peer.port()); 
+    printf("connected! %s:%d --> %s:%d\n", local.ip().c_str(), local.port(),
+                                           peer.ip().c_str(), peer.port()); 
     return accefd; 
 }
 
@@ -66,6 +66,7 @@ void Socket::setAddrReuse(bool on)
                            static_cast<socklen_t>(sizeof(optval))); 
     if (-1 == ret) {
         perror("setsockopt()"); 
+        close(_sockfd); 
         exit(EXIT_FAILURE); 
     }
 }
@@ -103,6 +104,7 @@ InetAddress Socket::localAddress(int sockfd)
     if (-1 == ret) {
         perror("getsockname()"); 
     }
+
     return InetAddress(addr); 
 }
 
@@ -115,7 +117,10 @@ InetAddress Socket::peerAddress(int sockfd)
     if (-1 == ret) {
         perror("getsockname()"); 
     }
+
     return InetAddress(addr); 
 }
 
-//void Socket::shutdownWrite() 
+//void Socket::shutdownWrite() {}
+
+}

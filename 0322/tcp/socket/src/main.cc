@@ -4,12 +4,12 @@
 
 int main()
 {
-    InetAddress inetaddr("192.168.107.129", 8888); 
-    Socket socket; 
+    TCP::InetAddress inetaddr("192.168.107.129", 8888); 
+    TCP::Socket socket; 
     socket.ready(inetaddr); 
 
-    int ret = socket.accept(); 
-    SocketIO sockIO(ret); 
+    int peerfd = socket.accept(); 
+    TCP::SocketIO sockIO(peerfd); 
 
     char buf[1024]; 
     //sockIO.readn(buf, sizeof(buf)); 

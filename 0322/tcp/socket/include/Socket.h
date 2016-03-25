@@ -3,6 +3,8 @@
 
 #include "InetAddress.h"
 
+namespace TCP {
+
 class Socket {
 public: 
     Socket(); 
@@ -25,5 +27,7 @@ public:
 private:
     int _sockfd; 
 }; 
+
+}
 
 #endif
