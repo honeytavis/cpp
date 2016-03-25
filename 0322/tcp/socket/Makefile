@@ -23,8 +23,6 @@ CFLAGS     := -Wall
 CXX        := clang++
 CXXFLAGS   := -Wall -std=c++11
 
-VPATH       = ../bin
-
 # =========================================================================
 # Rules shared between targets and prerequisites
 # =========================================================================
