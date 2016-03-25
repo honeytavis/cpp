@@ -2,10 +2,10 @@ DIRS = socket
 
 PHONY += all
 all:
-	cd socket; make
+	cd $(DIRS); make
 
 PHONY += clean 
 clean:
-	cd socket; make clean
+	cd $(DIRS); make clean
 
 .PHONY : PHONY
