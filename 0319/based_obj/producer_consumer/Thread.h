@@ -11,6 +11,8 @@ public:
 	~Thread(); 
 	void create(); 
 	void join(); 
+
+private:
 	static void* thread_func(void*); 
 
 private:

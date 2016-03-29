@@ -22,4 +22,4 @@ int main()
 	return 0; 
 }
 
-// g++ *.cc -lpthread
+// clang++ *.cc -std=c++11 -lpthread
