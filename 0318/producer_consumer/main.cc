@@ -1,6 +1,7 @@
 #include "ProducerThread.h"
 #include "ConsumerThread.h"
 #include "Buffer.h"
+#include <iostream>
 
 int main()
 {

@@ -3,15 +3,16 @@
 
 #include "Thread.h"
 
-class Buffer; // 前向声明
+/// forward declaration
+class Buffer;
 
 class ProducerThread : public Thread {
 public: 
-  ProducerThread(Buffer& buff);
+  ProducerThread(Buffer& buf);
 	void run();
  
 private:
-  Buffer& _buff;
+  Buffer& _buf;
 }; 
 
 #endif

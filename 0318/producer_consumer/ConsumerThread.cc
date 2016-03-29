@@ -4,13 +4,13 @@
 #include <unistd.h>
 #include <iostream>
 
-ConsumerThread::ConsumerThread(Buffer& buff) : _buff(buff) {}
+ConsumerThread::ConsumerThread(Buffer& buf) : _buf(buf) {}
 
 void ConsumerThread::run()
 {
   for (;;) {
-    int num = _buff.pop(); 
-    std::cout << num << '\n'; 
+    int num = _buf.pop(); 
+    std::cout << "Consumer: " << num << '\n'; 
     sleep(2); 
   }
 }

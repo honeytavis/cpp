@@ -8,7 +8,7 @@
 class Buffer {
 public: 
   Buffer(int size); 
-  void push(int); 
+  void push(int num); 
   int pop(); 
 
   bool empty(); 

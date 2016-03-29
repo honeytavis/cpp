@@ -11,6 +11,6 @@ public:
   void run();
 
 private:
-  Buffer& _buff;
+  Buffer& _buf;
 }; 
 #endif

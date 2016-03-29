@@ -40,5 +40,6 @@ int Buffer::pop()
   _que.pop();
   _mutex.unlock(); 
   _notfull.notify(); 
+
   return num; 
 }
