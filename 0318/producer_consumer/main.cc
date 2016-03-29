@@ -1,13 +1,18 @@
-#include "Thread.h"
-#include "SubThread.h"
+#include "ProducerThread.h"
+#include "ConsumerThread.h"
+#include "Buffer.h"
 
 int main()
 {
-	Thread* pthread = new SubThread; 
-	pthread->create(); 
-	pthread->create(); 
-	pthread->join(); 
-	pthread->join(); 
+  Buffer buffer(10); 
+	Thread* pProducer = new ProducerThread(buffer); 
+	Thread* pConsumer = new ConsumerThread(buffer); 
+
+	pProducer->create(); 
+	pConsumer->create(); 
+
+	pProducer->join(); 
+	pConsumer->join(); 
 
 	return 0; 
 }

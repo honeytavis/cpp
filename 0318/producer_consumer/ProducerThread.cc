@@ -1,10 +1,12 @@
-#include "SubThread.h"
+#include "ProducerThread.h"
 #include <time.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <iostream>
 
-void SubThread::run()
+ProducerThread::ProducerThread(Buffer& buff) : _buff(buff) {}
+
+void ProducerThread::run()
 {
 	srand(time(NULL)); 
 	for (int i = 0; i < 10; ++i) {
