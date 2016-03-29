@@ -1,4 +1,5 @@
 #include "Buffer.h"
+#include "MutexLockGuard.h"
 
 Buffer::Buffer(int size)
 : _mutex()
@@ -19,26 +20,24 @@ bool Buffer::full()
 
 void Buffer::push(int num)
 {
-  _mutex.lock(); 
+  MutexLockGuard guard(_mutex); 
   while(full()) {
     _notfull.wait(); 
   }
 
   _que.push(num); 
-  _mutex.unlock(); 
   _notempty.notify();
 }
 
 int Buffer::pop()
 {
-  _mutex.lock(); 
+  MutexLockGuard guard(_mutex); 
   while(empty()) {
     _notempty.wait();
   }
 
   int num = _que.front(); 
   _que.pop();
-  _mutex.unlock(); 
   _notfull.notify(); 
 
   return num; 
