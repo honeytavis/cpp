@@ -1,9 +1,10 @@
 #ifndef THREAD_H
 #define THREAD_H
 
+#include "Noncopyable.h"
 #include <pthread.h>
 
-class Thread {
+class Thread : private Noncopyable {
 public:
 	Thread(); 
 	~Thread(); 
@@ -13,8 +14,8 @@ public:
 	static void* thread_func(void*); 
 
 private:
-	pthread_t tid_; 
-	bool work_; 
+	pthread_t _tid; 
+	bool _active; 
 }; 
 
 #endif

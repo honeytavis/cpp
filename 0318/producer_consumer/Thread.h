@@ -14,8 +14,8 @@ public:
 	static void* thread_func(void*); 
 
 private:
-	pthread_t tid_; 
-	bool work_; 
+	pthread_t _tid; 
+	bool _active; 
 }; 
 
 #endif
