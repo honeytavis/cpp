@@ -1,4 +1,5 @@
 #include "Thread.h"
+#include <iostream>
 
 Thread::Thread() : _tid(0), _active(false) {}
 
@@ -8,6 +9,7 @@ Thread::~Thread()
 		pthread_detach(_tid); 
 		_active = false; 
 	}
+  std::cout << "~Thread()" << '\n'; 
 }
 
 void* thread_func(void* arg)

@@ -5,9 +5,9 @@ int main()
 {
 	Thread* pthread = new SubThread; 
 	pthread->create(); 
-	pthread->create(); 
 	pthread->join(); 
-	pthread->join(); 
+
+  delete pthread; 
 
 	return 0; 
 }
