@@ -1,7 +1,7 @@
 #include <iostream>
 
 char gs1[] = "123456789"; 
-char *gs2 = "123456789";
+char *gs2 = "123456789"; // warning
 const char gs3[] = "123456789"; 
 const char *gs4 = "123456789"; 
 
@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 {
   char s1[] = "123456789"; 
   static char s2[] = "123456789"; 
-  static char *s3 = "123456789"; 
+  static char *s3 = "123456789"; // warning
   
   const static char s4[] = "123456789"; 
   const static char *s5 = "123456789"; 
