@@ -29,8 +29,8 @@ public:
   int strftime()
   {
     char buf[16] = {0}; 
-    //int ret = std::strftime(buf, sizeof(buf), "%b%-3d %R", tmPtr); 
-    int ret = std::strftime(buf, sizeof(buf), "%b%-3d %T", tmPtr); 
+    //int ret = std::strftime(buf, sizeof(buf), "%b %-2d %R", tmPtr); 
+    int ret = std::strftime(buf, sizeof(buf), "%b %-2d %T", tmPtr); 
     if (!ret) {
       return ret; 
     }
