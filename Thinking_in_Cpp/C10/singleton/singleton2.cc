@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Singleton.h"
+#include "Singleton2.h"
 
 int main()
 {
@@ -8,9 +8,6 @@ int main()
 
 	std::cout << "addr s1: " << static_cast<void *>(s1) << std::endl; 
 	std::cout << "addr s2: " << static_cast<void *>(s2) << std::endl; 
-
-  s1->Distructor(); 
-  s2->Distructor(); 
 
 	return 0; 
 }

@@ -3,27 +3,35 @@
 
 class Singleton {
 public:
-	//不需要再创建类 可直接调用
-	//只能使用静态数据成员
-	static Singleton *GetInstance(); 
+	static Singleton* getSingleton();
+  static void Distructor();
 
 private:
-	Singleton()
-	{
-		std::cout << "Singleton()" << std::endl; 
-	}
+	Singleton() {}
+  Singleton(const Singleton&); // Prevent copy-construction
 
-	static Singleton *pInstance; 
+private:
+	static Singleton* singletonPtr; 
 }; 
 
-Singleton *Singleton::pInstance = nullptr; 
+Singleton* Singleton::singletonPtr = NULL; 
 
-Singleton *Singleton::GetInstance()
+Singleton* Singleton::getSingleton()
 {
-	if (pInstance == nullptr) {
-		pInstance = new Singleton;
+	if (singletonPtr == NULL) {
+		singletonPtr = new Singleton;
 	}
-	return pInstance; 
+
+	return singletonPtr; 
+}
+
+void Singleton::Distructor()
+{
+  if (singletonPtr == NULL) {
+    return; 
+  }
+  delete singletonPtr; 
+  singletonPtr = NULL; 
 }
 
 #endif
