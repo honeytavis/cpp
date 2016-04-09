@@ -1,10 +1,15 @@
 #ifndef SINGLETON_H
 #define SINGLETON_H
 
+#include <iostream>
+
 class Singleton {
 public:
 	static Singleton* getSingleton();
   static void Distructor();
+  ~Singleton() {
+    std::cout << "~Singleton()" << '\n'; 
+  }
 
 private:
 	Singleton() {}
