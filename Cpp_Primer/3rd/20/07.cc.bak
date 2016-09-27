@@ -1,0 +1,42 @@
+#include <iostream>
+using std::cin; 
+using std::cout; 
+using std::endl; 
+
+#include <string>
+using std::string; 
+
+#include <vector>
+using std::vector; 
+
+#include <iterator>
+using std::istream_iterator; 
+
+#include <algorithm>
+
+bool length_less(string s1, string s2) {
+    return s1.size() < s2.size(); 
+}
+
+int main()
+{
+
+    istream_iterator<string> in(cin), eos; 
+    vector<string> text; 
+    copy(in, eos, back_inserter(text)); 
+
+    string filt_elems("\",.?;:"); 
+    filter_string(text.begin(), text.end(), filt_elems); 
+
+    int cnt = text.size(); 
+
+    vector<string>::iterator max_element; 
+    max_element = (text.begin(), text.end(), length_less); 
+    int len = max_element->size(); 
+
+    cout << "The number of words read is" << cnt << endl; 
+    cout << "The longest word has a length of" << len << endl; 
+    cout << "The longest word is " << *max_element << endl; 
+
+    return 0; 
+}

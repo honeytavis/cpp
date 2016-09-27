@@ -1,0 +1,39 @@
+#include <iostream>
+using std::cin; 
+using std::cout; 
+using std::endl; 
+
+#include <list>
+using std::list; 
+
+#include <numeric>
+using std::adjacent_difference; 
+
+#include <iterator>
+using std::ostream_iterator; 
+
+#include <functional>
+using std::multiplies; 
+
+int main()
+{
+    int ia[] = {1, 1, 2, 3, 5, 8}; 
+    list<int> ilist(ia, ia+6); 
+    list<int> ilist_result(ilist.size()); 
+
+    adjacent_difference(ilist.begin(), ilist.end(), 
+                        ilist_result.begin()); 
+
+    copy(ilist_result.begin(), ilist_result.end(), 
+         ostream_iterator<int>(cout, " ")); 
+    cout << endl; 
+
+    adjacent_different(ilist.begin(), ilist.end(), 
+                       ilist_result.begin(), multiplies<int>()); 
+    
+    copy(ilist_result.begin(), ilist_result.end(), 
+         ostream_iterator<int>(cout, " ")); 
+    cout << endl; 
+
+    return 0; 
+}
